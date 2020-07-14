@@ -1,0 +1,30 @@
+ul.menus {
+
+padding: 0;
+text-align: center;
+list-style: none;
+}
+ul.menus li {
+display: inline-block;
+margin: 0 8px;
+background: #6304ab;
+color: #fff;
+border-radius: 5px;
+cursor: pointer;
+}
+ul.menus li a  {color: #fff;}
+ul.menus li a {
+    padding: 5px 10px;
+}
+ul.menus li a:hover, ul.menus li a {
+    background: #6304ab;
+    border-radius: 4px;
+
+}
+.dropdown-menu li.nav-item a.nav-link.dropdown-item, .dropdown-menu li.nav-item a.nav-link.dropdown-item {
+    color: #000 !important;background: transparent;
+}
+.dropdown-menu li.nav-item {
+    width: 140px;
+    background: transparent;
+}

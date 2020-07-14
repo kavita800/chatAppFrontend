@@ -1,0 +1,33 @@
+<header></header>
+<div class="container">
+  <div class="col-sm-9 col-md-7 mx-auto">
+    <div class="card card-signin my-5">
+      <div class="card-body">
+        <div class="">
+           <h5 class="w-30 left pull-left">Users</h5>
+           <div *ngIf="userData?.length > 0" class="w-70 mb-2 pull-right">
+             <input type="text" class="form-control" placeholder="Group Name" [(ngModel)] ="groupName">
+            <button class="btn btn-info" (click) ="createGroup();"> Create Group</button>
+           </div>
+        </div>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of Users">
+              <td width="80%" *ngIf="user.username != UsersObj?.username">
+                <input type="checkbox" class="mr-1" (change)="selectUsers(user._id);">{{ user.username }}
+              </td>
+              <td width="10%" *ngIf="user.username != UsersObj?.username"><button class="btn btn-success button"
+                  routerLink="/groupchat" [queryParams]="{ name: user.username, email: user.email }">Chat</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

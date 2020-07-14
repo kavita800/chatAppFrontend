@@ -1,0 +1,56 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+      <div class="card card-signin my-5">
+        <div class="card-body">
+          <h5 class="card-title text-center">Sign Up</h5>
+          <form class="form-signin" [formGroup]="signForm" (ngSubmit)="submitForm()">
+            <div class="form-label-group">
+              <input type="email" id="inputEmail" formControlName="email" class="form-control"
+                placeholder="Email address" required autofocus>
+              <label for="inputEmail">Email address</label>
+              <div *ngIf="isSubmit && get?.email?.errors?.required" class="ml-3 mt-1 frmErrMsg">Please enter
+                email.
+              </div>
+              <div *ngIf="isSubmit && get?.email?.errors?.email" class="ml-3 mt-1 frmErrMsg">Please enter
+                valid email.</div>
+            </div>
+
+            <div class="form-label-group">
+              <input type="email" id="inputEmail" formControlName="username" class="form-control"
+                placeholder="Username" required autofocus>
+              <label for="inputEmail">Username</label>
+              <div *ngIf="isSubmit && get?.username?.errors?.required" class="ml-3 mt-1 frmErrMsg">Please enter
+                username.
+              </div>
+            </div>
+
+            <div class="form-label-group">
+              <input type="password" id="inputPassword" formControlName="password" class="form-control"
+                placeholder="Password" required>
+              <label for="inputPassword">Password</label>
+              <div *ngIf="isSubmit && get?.password?.errors?.required" class="ml-3 mt-1 frmErrMsg">Please enter
+                password.
+              </div>
+            </div>
+
+            <div class="form-label-group">
+              <input type="password" id="inputPassword" formControlName="cfpassword" class="form-control"
+                placeholder="Confirm Password" required>
+              <label for="inputPassword">Confirm Password</label>
+              <div *ngIf="isSubmit && get?.cfpassword?.errors?.required" class="ml-3 mt-1 frmErrMsg">Please enter
+                confirm password.
+              </div>
+              <div *ngIf="isSubmit && !get?.cfpassword?.errors?.required && signForm?.errors?.mismatch" class="ml-3 mt-1 frmErrMsg">Password and confirm password are mismatch.
+              </div>
+            </div>
+            <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign Up</button>
+            <hr class="my-4">
+            <button [routerLink]="['/']" class="btn btn-lg btn-info btn-block text-uppercase"  type="button">Sign In</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

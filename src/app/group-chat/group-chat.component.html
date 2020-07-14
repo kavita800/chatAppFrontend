@@ -1,0 +1,30 @@
+<header></header>
+<div id="mario-chat">
+    <div class="headrs pt-0 pb-2">
+    <h2>{{ obj?.username ||  obj?.groupName}}</h2>
+    <span><i *ngIf="isTyping?.isTyping" class="isTyping">{{isTyping?.data?.user}} typing...</i></span>
+     <ul class="users mt-1" *ngIf="groupInfo?.members?.length && !isTyping?.isTyping">
+           <li *ngFor="let item of groupInfo?.members; let i = index">
+            <ng-container *ngIf="i < 14">{{item?.name}}
+               <ng-container *ngIf="i < groupInfo?.members?.length - 1">, </ng-container>
+            </ng-container>
+            <ng-container *ngIf="i >= 15">...</ng-container>
+           </li>
+     </ul>
+    </div>
+    <div id="chat-window">
+        <p class="createby" *ngIf="groupInfo">{{coreService.getUserInfo().username === groupInfo?.createdbyname ? 'You' : groupInfo?.createdbyname}} created group "{{groupInfo?.name}}"</p>
+        <div *ngFor="let item of messageArray" class="ml-3 mr-3 mt-3"> 
+            <p [class.userMessage] = "item.user != coreService.getUserInfo().username" 
+             [class.secUserMessage]="item.user == coreService.getUserInfo().username">
+                <span class="name">{{item.user == coreService.getUserInfo().username ? 'You' : item.user}}</span>
+                <span class="message">{{ item.message }}</span> 
+                <span class="date" *ngIf="item?.date">{{item?.date | timeago}}</span>
+            </p>                
+        </div>
+    </div>
+    <div class="sendV postion-relative">
+    <input (keypress)="typing(true)" (blur)="typing(false)" (keyup.enter)="sendMessage()" [(ngModel)]="message" name="message" type="text" placeholder="Message" />            
+    <button id="send" (click)="sendMessage()">Send</button>
+    </div>    
+</div>

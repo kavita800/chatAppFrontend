@@ -1,0 +1,17 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a [routerLink]="['/']" class="navbar-brand site-name text-dark">Welcome {{userObj?.userData?.username}}</a>
+   <div class="collapse navbar-collapse"  id="navItems">
+      <ul class="nav navbar-nav ml-auto menus">
+          <li *ngIf="coreService.isUserIn()" [routerLinkActive]="['active']" class="nav-item">
+            <a class="nav-link dropdown-item cursor" routerLink="/users">Users</a>
+        </li>
+        <li *ngIf="coreService.isUserIn()" [routerLinkActive]="['active']" class="nav-item">
+          <a class="nav-link dropdown-item cursor" routerLink="/groups">Groups</a>
+      </li>
+        <li *ngIf="coreService.isUserIn()" [routerLinkActive]="['active']" class="nav-item">
+            <a class="nav-link dropdown-item cursor" (click)="onLogoutClick()">Logout</a>
+        </li> 
+        
+      </ul> 
+    </div> 
+</nav> 
